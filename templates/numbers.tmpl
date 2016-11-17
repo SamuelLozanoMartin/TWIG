@@ -1,0 +1,58 @@
+<html>
+  <head>
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  </head>
+  <body>
+  {% set pares = 0 %}
+  {% set impares = 0 %}
+  <div class="w3-round-small w3-teal w3-padding" style="text-align: center;">
+    {% if (numPremio == num) %}
+      <i class="fa fa-thumbs-o-up" style="font-size:48px;color:blue;"></i>
+    {% endif %}
+    <h3>{{numbers | length}} intentos</h3>
+    <span class="w3-badge w3-jumbo w3-padding-large w3-red" id="pares"> </span>pares
+    <h3 id="impares"> </h3>impares
+    <h2>Odd or Even</h2>
+    {% if div == 0 %}
+      {{ num }} is even.
+    {% else %}
+      {{ num }} is odd.
+    {% endif %}
+  </div>
+
+    <div>
+      <table class="w3-table-all" style="width: 80%;  margin: auto;">
+        <tr class="w3-brown">
+          <td>INDICE</td>
+          <td>Even</td>
+          <td>Odd</td>
+        </tr>
+      	 {% for x in numbers %}
+            <tr>
+               <td><span class="w3-badge w3-green">{{numbers | length - loop.index}}</span></td>
+          	   {% if x%2 == 0 %}
+                  <td>{{x}}</td>
+                  <td></td>
+                  {% set pares = pares + 1 %}
+               {% else %}
+                  <td></td>
+                  <td>{{x}}</td>
+                  {% set impares = impares + 1 %}
+               {% endif %}
+            </tr>
+      	 {% endfor %}
+      </table>
+      {{pares}}
+    </div>
+    <script type="text/javascript">
+    {% if activado %}
+      setTimeout(function(){
+        location = ''
+      },5000);
+    {% endif %}
+      document.getElementById("pares").innerHTML = {{pares}};
+      document.getElementById("impares").innerHTML = {{impares}};
+    </script>
+  </body>
+</html>

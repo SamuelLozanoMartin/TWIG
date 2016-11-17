@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<title>Examen Final Prova Practica Modul 2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<body>
+  <div class="w3-card-4">
+
+  <div class="w3-container w3-brown">
+    <h2>Registre d'empleats</h2>
+  </div>
+  <form class="w3-container" method="POST" action="listado.php">
+
+  <p>
+  <label class="w3-label w3-text-brown"><b>Nombre</b></label>
+  <input class="w3-input w3-border w3-sand" name="nombre" type="text"></p>
+  <span >{{nameErr}}</span>
+  <p>
+  <label class="w3-label w3-text-brown"><b>Apellidos</b></label>
+  <input class="w3-input w3-border w3-sand" name="apellidos" type="text"></p>
+  <span >{{apellidosErr}}</span>
+  <p>
+
+  <p>
+  <label class="w3-label w3-text-brown"><b>Fecha de nacimiento</b><i> (format: 2016-07-17)</i></label>
+  <input class="w3-input w3-border w3-sand" name="fechaNacimiento" type="text"></p>
+  <span >{{fechaErr}}</span>
+  
+  <p><button class="w3-btn w3-brown">registrar</button></p>
+
+  </form>
+</div>
+  
+<div class="w3-container w3-responsive">
+
+<table class="w3-table w3-bordered w3-striped w3-large">
+  <tr>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Apellidos</th>
+    <th>Fecha de nacimiento</th>
+  </tr>
+  {%for miembros in miembro%}
+  <tr>
+    <td>{{miembros.id}} </td>
+    <td>{{miembros.nombre}}  </td>
+    <td>{{miembros.apellidos}}  </td>
+    <td>{{miembros.fecha}}  </td>
+    <td><a href="listado.php?id={{miembros.id}}">Eliminar</a></td>
+    <td><a href="update.php?id={{miembros.id}}">Actualizar</a></td>
+  </tr>
+  {%endfor%}
+
+</table>
+</div>
+</body>
+</html>
